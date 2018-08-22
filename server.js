@@ -1,6 +1,7 @@
 const express = require( 'express' );
-const hbs = require( 'hbs' );
 const app = express();
+const hbs = require( 'hbs' );
+require( './hbs/helpers' );
 
 app.use( express.static( __dirname + '/public' ) );
 
@@ -10,15 +11,12 @@ app.set( 'view engine', 'hbs' );
 
 app.get( '/', ( req, res ) => {
     res.render( 'home', {
-        nombre: 'Max Alva',
-        year: new Date().getFullYear()
+        nombre: 'Max Alva'
     } );
 } );
 
 app.get( '/about', ( req, res ) => {
-    res.render( 'about', {
-        year: new Date().getFullYear()
-    } );
+    res.render( 'about' );
 } );
 
 app.listen( 3000, () => {
